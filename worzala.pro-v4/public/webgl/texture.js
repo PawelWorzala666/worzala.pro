@@ -34,7 +34,7 @@ function CreteTexture(TEX){
          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       }
    });
-   image.src = '/giirll.png'
+   image.src = '/mc.jpg'
 
    function isPowerOf2(value) {
       return (value & (value - 1)) === 0;
