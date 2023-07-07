@@ -1,0 +1,856 @@
+body {
+    margin: 0;
+    font-family: monospace, sans-serif;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+    flex: 7;
+    position: relative;
+    display: flex;
+    min-height: 100%;
+    overflow: initial;
+}
+
+#editor textarea {
+    color: transparent;
+    caret-color: red;
+    background: transparent;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex > *{
+    flex: 1;
+}
+
+#files {
+    min-height: 100vh;
+    border-right: 1px solid #ccc;
+}
+
+
+
+.flex.horizontal {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+#ascn {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    width: calc( 256px + 64px );
+    height: calc( 256px + 64px );
+    z-index: 1000000;
+}
+
+
+#files,#editor{}
+
+#run,#plus {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 0;
+    left: 123px;
+}
+
+#files {
+    width: 155px;
+    flex: unset;
+    margin-top: 25px;
+}
+
+#run img,#plus img,.icon img {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+
+#plus {
+    left: 3px;
+    border: none;
+    top: 5px;
+}
+
+#plus img {
+    width: 24px;
+    height: 24px;
+}
+
+#editor textarea{
+    z-index: 100000;
+}
+#editor pre{
+    z-index: 10;
+}
+
+
+#editor {
+    margin-left: 155px;
+}
+
+#files {
+    position: fixed;
+}
+
+#run, #plus,.icon {
+    position: fixed;
+}
+
+#run{
+    display: none;
+}
+
+body.js #run{
+    display: block;
+}
+
+#files {
+    position: fixed;
+    top: 0;
+    margin: 0;
+    padding: 6px;
+    padding-top: 28px;
+    width: 140px;
+}
+
+#run, #plus,.icon {
+    position: fixed;
+    z-index: 10000;
+}
+
+#minus {
+    position: absolute;
+    right: 18px;
+    top: 4px;
+}
+#minus img {
+    width: 14px;
+    height: 14px;
+}
+
+.list {
+    position: relative;
+}
+
+.list .icon{
+    display: none;
+}
+
+.list:hover .icon{
+    display: block;
+}
+
+.list {
+    position: relative;
+    width: 100%;
+    padding: 2px;
+    font-size: 16px;
+}
+
+.list:hover {
+    background: #dcdcdc;
+}
+
+img#svg {
+    display: none;
+    width: 256px;
+    height: 256px;
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    z-index: 10000;
+    border: 1px solid #ccc;
+}
+body.svg img#svg {
+    display: block;
+}
+
+#log,#cmd div.content {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    z-index: 1000;
+    left: 153px;
+    height: 125px;
+    border-top: 1px solid #ccc;
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: stretch;
+    overflow: hidden;
+    margin-bottom: 0;
+    background: #fff;
+}
+
+#log pre,#cmd pre{
+    margin: 0;
+}
+
+#editor {
+    margin-left: 155px;
+    position: absolute;
+    top: 0;
+    bottom: 100px;
+    height: 100%;
+    padding-bottom: 220px;
+    box-sizing: content-box;
+}
+
+
+#log-tools {
+    position: fixed;
+    bottom: 122px;
+    left: 154px;
+    right: 0;
+    height: 32px;
+    border-top: 1px solid #ccc;
+    padding: 4px;
+    z-index: 100000;
+}
+
+#log-tools pre {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0;
+}
+
+#cmd {
+    z-index: 200;
+}
+
+
+[name="cmd"] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    caret-color: red;
+    outline: none;
+    border: none;
+    border-top: 1px solid #ccc;
+    z-index: 99999;
+}
+
+#cmd div.content {
+    display: inline-grid;
+    justify-content: space-evenly;
+    padding-bottom: 24px;
+    height: 109px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: end;
+    overflow: scroll;
+    align-content: stretch;
+}
+
+#cmd {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    left: 153px;
+    height: 163px;
+    display: flex;
+}
+
+
+#log pre, #cmd pre {
+    margin: 0;
+    white-space: break-spaces !important;
+    resize: none;
+    text-align: left;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5 !important;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    hyphens: none;
+    font-family: monospace;
+    display: inline-grid;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    position: absolute;
+    justify-items: stretch;
+    margin-left: 0;
+    padding: 0;
+    height: 200px;
+}
+
+#cmd div.content {
+    display: inline-grid;
+    justify-content: space-evenly;
+    padding-bottom: 24px;
+    height: 109px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: end;
+    overflow: scroll;
+    align-content: stretch;
+}
+
+#cmd {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    left: 153px;
+    height: 163px;
+    display: flex;
+}
+
+#log-tools {
+    position: fixed;
+    bottom: 122px;
+    left: 154px;
+    right: 0;
+    height: 19px;
+    border-bottom: 1px solid #ccc;
+    padding: 4px;
+    z-index: 10000000;
+    background: #fff;
+}
+
+#log-tools p {
+    display: inline-block;
+    margin: 0;
+}
+
+#log pre, #cmd pre {
+    height: 114px;
+}
+
+#editor {
+    height: 100vh;
+}
+
+#log pre, #cmd pre {
+    margin: 0;
+    white-space: break-spaces !important;
+    text-align: left;
+    line-height: 1.5 !important;
+    font-family: monospace;
+    display: block;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    position: relative;
+    margin-left: 0;
+    padding: 0;
+    height: auto !important;
+}
+
+#cmd div.content {
+    display: inline-grid;
+    padding-bottom: 24px;
+    height: 109px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: end;
+    overflow: scroll;
+    align-content: stretch;
+    justify-content: start;
+}
+
+#files {
+    position: fixed;
+    top: 0;
+    margin: 0;
+    padding: 6px;
+    padding-top: 28px;
+    width: 140px;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+
+
+
+#getf{
+    position: fixed;
+    z-index: 999999999;
+}
+
+#run {
+    display: block;
+}
+
+#exec {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    z-index: 999999999;
+    cursor: pointer;
+}
+
+#editor {
+    position: absolute;
+    overflow-x: hidden;
+    right: 0;
+    left: 0;
+    width: auto;
+    bottom: 0;
+    height: auto;
+    top: 0;
+    min-height: unset;
+    padding-bottom: 0;
+    margin-bottom: 17px;
+    margin-left: 0;
+}
+
+
+.renderer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    padding: 8px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+}
+
+.icon {
+    position: relative;
+    margin: 3px;
+}
+
+
+#editor {
+    position: absolute;
+    overflow-x: hidden;
+    right: 0;
+    left: 0;
+    width: auto;
+    bottom: 0;
+    height: auto;
+    top: 0;
+    min-height: unset;
+    padding-bottom: 0;
+    margin-bottom: 17px;
+    margin-left: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+body {
+    font-size: 15.8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+#editor textarea, #editor pre {
+    font-size: 15.8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+.list {
+    font-size: 15.8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+#files-list{
+    font-size: 0.8em;
+    font-weight: 400;
+}
+#files-list * {
+    font-size: 0.84024em;
+    font-weight: 300;
+}
+#files-list > * {
+    font-size: 1.4em;
+}
+
+
+#editor textarea{
+    caret-color: red;
+    z-index: 999999999;
+}
+
+#main-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px 8px;
+}
+#main-links a {
+    margin-right: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #8f8f8f;
+}
+
+#run {
+    position: absolute;
+    left: 0;
+    z-index: 99999999999999;
+}
+
+#console {
+    position: absolute;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+#console .container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: max-content;
+    top: 0;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+.cat{
+
+}
+.cat .subcat {
+    width: 190px;
+    display: inline-block;
+    text-align: left;
+}
+.cat .subs {
+    display: block;
+    padding-left: 30px;
+}
+
+#editor textarea, #editor pre {
+    top: 0;
+    min-height: 100vh;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    overflow-y: visible;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    overflow-x: hidden;
+    font-size: 14.5px;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-line-break: after-white-space;
+    border: none;
+    padding: 8px !important;
+    margin: 0 !important;
+    white-space: break-spaces !important;
+    resize: none;
+    text-align: left;
+    word-spacing: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+    line-height: 1.5 !important;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    hyphens: none;
+    font-family: monospace;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+.window {
+    position: fixed;
+    z-index: 99999999;
+    left: 0;
+    top: 0;
+    background: #fff;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 16px;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.window > .frame {
+    padding-bottom: 128px;
+    padding-top: 32px;
+}
+
+.window .icon.close {
+    right: 8px;
+    top: 8px;
+    position: absolute;
+}
+
+.icon {
+    z-index: 99999999999;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+.flex.poziomo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+.ceneo .price{
+    font-weight: 500;
+}
+
+
+.product.error {
+    color: #ccc;
+}
+
+.product.error .error {
+    color: red;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+
+.window .icon.close {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+}
+
+
+
+.products .product img{
+    width: 256px;
+    height: 256px;
+}
+
+
+
+
+
+
+
+.product .details {
+    padding: 18px 15px;
+}
+
+
+input {
+    font-size: 1.07115em;
+    padding: 2px 4px;
+    margin: 2px;
+}
+
+h1,h2,h3 {
+    color: #205f85;
+}
+
+
+#f53ew345f {
+    background: #c526bf;
+    border-radius: 0;
+    border: none;
+}
+#f53ew345f a {
+    color: #fff;
+    font-weight: 500;
+    padding: 4px;
+    top: 11px;
+    position: relative;
+    left: 14px;
+}
+
+.productsfrm .filters {
+    padding: 56px;
+    margin: -48px;
+    background: #ccc;
+    margin-bottom: 32px;
+    position: relative;
+    top: -16px;
+}
+
+input,select,option,textarea {
+    font-size: 1.07115em;
+    padding: 2px 4px;
+    margin: 2px;
+    outline: none;
+    background: #afb5e54f;
+    margin: 6px 4px;
+    border: 1px solid #757575;
+    padding: 8px;
+}
+
+.products .product{
+    padding-bottom: 58px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 22px;
+}
+
+
+#editor textarea, #editor pre {
+    font-size: 1.084em;
+    font-weight: 600;
+}
+
+.categories input {
+    width: 85px;
+}
+
+
+.productsfrm{
+    position: fixed;
+    width: calc( 100% - 64px );
+    padding-top: 32px;
+    right: 32px;
+    left: 32px;
+}
+
+.window {
+    position: absolute;
+    z-index: 99999999;
+    left: 0;
+    background: #fff;
+    height: 100vh;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.productsfrm {
+    position: fixed;
+    width: calc( 100% - 64px );
+    padding-top: 32px;
+    right: 32px;
+    left: 32px;
+    position: absolute;
+}
+
+
+.productsfrm .filters {
+    padding: 56px;
+    margin: -48px;
+    background: #7d6593;
+    margin-bottom: 32px;
+    position: relative;
+    top: -16px;
+    color: #fff;
+}
+
+input, select, option, textarea {
+    font-size: 1.07115em;
+    padding: 2px 4px;
+    margin: 2px;
+    outline: none;
+    background: #afb5e54f;
+    margin: 6px 4px;
+    border: 1px solid #d3d3d3;
+    padding: 8px;
+}
+
+input::placeholder {
+	color: rgb(192, 192, 192);	/*This will set the gray color of the placeholder text*/
+    font-weight: 300;
+} 
+
+input[type="checkbox"] {
+    transform: scale(1.65);
+    margin: 14px;
+}
+
+input, select, option, textarea {
+    color: #fff;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.products input, .products  select, .products  option, .products  textarea {
+    color: #666;
+}
+.categories input, .categories  select, .categories  option, .categories  textarea {
+    color: #666;
+}
+
+.filters input,.filters select,.filters option, .filterstextarea {
+    color: #fff;
+    font-weight: 600;
+    opacity: 1;
+    font-weight: 400;
+    text-shadow: none;
+    box-shadow: none;
+    font-family: 'Roboto';
+}
+
+
+.filters input,.filters select,.filters option,.filterstextarea {
+    color: #fff;
+    font-weight: 600;
+    opacity: 1;
+    font-weight: 400;
+    text-shadow: none;
+    box-shadow: none;
+    font-family: 'Roboto';
+    background: #484151;
+}
+
+.product.error {
+    color: inherit;
+}
+
+.product.error .error {
+    color: red;
+    font-weight: 600;
+    font-size: 2em;
+    position: absolute;
+    right: 0;
+}
+
+.products .product img {
+    width: 100%;
+    height: auto;
+}
+.window .icon.close {
+    position: fixed;
+    width: 32px;
+    height: 31px;
+    right: 24px;
+    top: 8px;
+}
+
+.cat {
+    font-size: 1.14em;
+    font-weight: 500;
+}
+
+.cat .subcat {
+    font-size: 0.841em;
+    font-weight: 400;
+}

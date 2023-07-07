@@ -1,0 +1,32 @@
+{
+    "orient": "up",
+    "pane1":{
+        "orient": "up",
+        "pane1": {
+            "GUI": "MainLinks",
+            "id":"f53ew345f"
+        },
+        "pane2": {
+            "orient": "left",
+            "pane1": {
+                "GUI": "ProductsList"
+            },
+            "pane2": {
+                "orient": "left",
+                "pane1": {
+                    "GUI": "Selector"
+                },
+                "pane2": {
+                    "GUI": "Aside"
+                },
+                "half": 50.06
+            },
+            "half": 24.51
+        },
+        "half": 6.51
+    },
+    "pane2": {
+        "GUI": "Console"
+    },
+    "half": 86.51
+}

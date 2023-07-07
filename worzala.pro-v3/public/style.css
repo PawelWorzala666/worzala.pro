@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: monospace, sans-serif;
+    font-size: 17.7145283px;
+    min-height: 100vh;
+}
+*{
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+kijka {
+    font-size: 1.22888em;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+hha{
+    color: rgba(256,257,258,288);
+    font-size: 3.1415em;
+}
+hhb{
+    color: rgba(256,257,258,287);
+    font-size: 2.1415em;
+}
+hhc{
+    color: rgba(256,257,258,286);
+    font-size: 1.1415em;
+}
+#rngette {
+    position: fixed;
+    z-index: -4;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    right: 100vh;
+}
+ccnd {
+    position: fixed;
+    z-index: 2;
+    background: transparent;
+    left: 0;
+    width: 100vw;
+    top: 0;
+    height: 100vh;
+}
+script,style,link,head{
+    position: absolute;
+    z-index: -1;
+    display: none;
+}

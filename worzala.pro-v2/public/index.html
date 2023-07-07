@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+   <head>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+
+      <link href="/styles/style.css" rel="stylesheet">
+      <link href="/styles/code.css" rel="stylesheet">
+      <link href="/styles/xmmfrme.css" rel="stylesheet">
+      <link href="/styles/rssfrme.css" rel="stylesheet">
+      <link href="/styles/flex.css" rel="stylesheet">
+
+      <link href="/styles/hello.css" rel="stylesheet">
+
+
+   </head>
+   <body>
+<!--
+      <script src="/scripts/base/node.js"></script>
+      <script src="/scripts/base/http.js"></script>
+      <script src="/scripts/base/storage.js"></script>
+
+      <script src="/scripts/partee/hello.js"></script>
+
+      <script src="/scripts/partee/window.js"></script>
+      <script src="/scripts/partee/colorize.js"></script>
+      <script src="/scripts/partee/code.js"></script>
+      <script src="/scripts/partee/links.js"></script>
+
+      <script src="/scripts/partee/others.js"></script>
+
+      <script src="/scripts/partee/aside.js"></script>
+      <script src="/scripts/partee/console.js"></script>
+
+
+      <script src="/scripts/gui/xmmfrme.js"></script>
+      <script src="/scripts/gui/rssfrme.js" class="flex"></script>
+      <script src="/scripts/gui/guifrm.js"></script>
+   
+
+      <script src="/scripts/script.js" defer></script>
+-->
+<script type="module">
+   import { initASWebGLue, ASWebGLReady } from '../../ASWebGLue.js';
+
+
+window.Worzala3d = function(prent){
+
+   const wasm_file = 'worzala3d.wasm';
+   var exports;
+   //var w = window.innerWidth * 0.99;
+   //var h = window.innerHeight * 0.99;
+   var cnvs = document.getElementById("cnvs");
+   //if (w > h) {
+     cnvs.width = prent.clientWidth
+     cnvs.height = prent.clientHeight
+   /*}
+   else {
+     cnvs.width = w;
+     cnvs.height = w;
+   }*/
+ 
+   function renderFrame() {
+     // call the displayLoop function in the WASM module
+     exports.displayLoop();
+ 
+     // requestAnimationFrame calls renderFrame the next time a frame is rendered
+     requestAnimationFrame(renderFrame);
+ 
+   }
+ 
+   const memory = new WebAssembly.Memory({ initial: 100 }); // linear memory
+ 
+   var importObject = {
+     env: {
+       memory: memory,
+       seed: Date.now,
+     }
+   };
+ 
+   initASWebGLue(importObject);
+ 
+   (async () => {
+     // use WebAssembly.instantiateStreaming in combination with
+     // fetch instead of WebAssembly.instantiate and fs.readFileSync
+     let obj = await WebAssembly.instantiateStreaming(
+       fetch(wasm_file),
+       importObject);
+     console.log(obj);
+     exports = obj.instance.exports;
+     console.log(exports);
+     ASWebGLReady(obj, importObject);
+     requestAnimationFrame(renderFrame);
+   })();
+
+}
+</script>
+<script src="/webpage.js" defer></script>
+</body>
+</html>
