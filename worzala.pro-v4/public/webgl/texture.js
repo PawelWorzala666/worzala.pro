@@ -34,6 +34,12 @@ function CreteTexture(TEX){
          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       }
+
+
+      var canvas = document.getElementById('my_Canvas');
+      canvas.width = image.width
+      canvas.height = image.height
+
    });
    //image.src = '/kg01.jpg'
 
@@ -51,32 +57,8 @@ function readURL(input) {
    if (input.files && input.files[0]) {
          var reader = new FileReader();
          reader.onload = function (e) {
-
             image.src= e.target.result
-/*
-            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-   gl.bindTexture(gl.TEXTURE_2D, tt.texture);
-   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,gl.UNSIGNED_BYTE, e.target.result);
-   
-   if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
-      // Yes, it's a power of 2. Generate mips.
-      gl.generateMipmap(gl.TEXTURE_2D);
-   } else {
-      // No, it's not a power of 2. Turn off mips and set
-      // wrapping to clamp to edge
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-   }
-            //const img = document.querySelector('img_1')
-            //img.clientWidth = 100
-            //img.clientHeight = 100
-               //$('.prw_img,#img_1').attr('src', e.target.result)
-              // img.setAttribute('src',e.target.result)
-               //.width(112).height(112);
-               //$('#img_1').css('display','inline');*/
          };
          reader.readAsDataURL(input.files[0]);
+   }
 }
-}
-//image.addEventListener('change',()=>{readURL(this);})
